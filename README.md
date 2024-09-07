@@ -86,37 +86,43 @@ Once VS Code is set up, clone your `ansible-config-mgt` GitHub repository to you
 ```
 git clone https://github.com/<your-username>/ansible-config-mgt.git
 ```
+![image](https://github.com/user-attachments/assets/15aa6895-25cd-4bb9-a996-3a17d5b1eb64)
 
----
 
 ## Step 3: Start Ansible Development
 
 ### 1. Create a New Feature Branch
 Create a new branch for your Ansible configuration:
+![image](https://github.com/user-attachments/assets/bd55a7a9-9a25-495b-8015-a0427f41e30d)
 
-```bash
+
+```
 git checkout -b feature/prj-11-ansible-config
 ```
+![image](https://github.com/user-attachments/assets/b2ac634f-2628-48b7-83a4-5ec79887b868)
+
 
 ### 2. Create Folders for Playbooks and Inventory
 Organize your project by creating the following directories:
 
-```bash
+```
 mkdir playbooks
 mkdir inventory
 ```
+![image](https://github.com/user-attachments/assets/ad9ab058-802e-4802-99e9-bf4e927848f6)
+
 
 ### 3. Create Your First Playbook
 In the `playbooks` directory, create your first playbook:
 
-```bash
+```
 touch playbooks/common.yml
 ```
 
 ### 4. Create Environment-Specific Inventory Files
 Create inventory files for different environments (dev, staging, production):
 
-```bash
+```
 touch inventory/dev.yml inventory/staging.yml inventory/prod.yml
 ```
 
@@ -126,7 +132,7 @@ touch inventory/dev.yml inventory/staging.yml inventory/prod.yml
 
 An **Ansible inventory** file defines the hosts and groups on which commands and tasks will run. Here's a sample inventory configuration for the `dev.yml` file:
 
-```yaml
+```
 all:
   children:
     webservers:
