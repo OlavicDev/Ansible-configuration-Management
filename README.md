@@ -125,8 +125,11 @@ Create inventory files for different environments (dev, staging, production):
 ```
 touch inventory/dev.yml inventory/staging.yml inventory/prod.yml
 ```
+![image](https://github.com/user-attachments/assets/391c68f5-8f36-47d0-8912-5194dc3c525f)
 
 ---
+![image](https://github.com/user-attachments/assets/d97cb67f-b2da-43e5-84a2-e9a99274a126)
+
 
 ## Step 4: Configure the Ansible Inventory
 
@@ -150,10 +153,11 @@ all:
         <lb-server-private-ip>:
           ansible_ssh_user: ubuntu
 ```
+![image](https://github.com/user-attachments/assets/2b4e6824-d2ca-4845-b17d-963bb6c42591)
 
 To set up SSH access to your servers, start the SSH agent and add your private key:
 
-```bash
+```
 eval `ssh-agent -s`
 ssh-add <path-to-private-key>
 ```
@@ -164,7 +168,7 @@ ssh-add <path-to-private-key>
 
 A playbook defines tasks that Ansible will perform on your servers. For example, the `common.yml` playbook below installs Wireshark on both RHEL 9 and Ubuntu servers:
 
-```yaml
+```
 ---
 - name: Update web and NFS servers
   hosts: webservers, nfs
@@ -190,6 +194,8 @@ A playbook defines tasks that Ansible will perform on your servers. For example,
         name: wireshark
         state: latest
 ```
+![image](https://github.com/user-attachments/assets/583e96dd-0747-47b3-bd7d-05369b37610c)
+
 
 ### Additional Tasks (Optional):
 You can extend the playbook to:
@@ -203,13 +209,19 @@ You can extend the playbook to:
 
 Once your changes are ready, push the code to GitHub:
 
-```bash
+```
 git add .
 git commit -m "Add common.yml playbook"
 git push origin feature/prj-11-ansible-config
 ```
+![image](https://github.com/user-attachments/assets/10ecfd57-ba94-48ec-be1d-401620d0eb20)
+![image](https://github.com/user-attachments/assets/53a2d1ce-715e-4c97-98fe-5d9e3c9d336a)
+
 
 Create a **Pull Request (PR)** in GitHub and have it reviewed by your team. Once approved, merge it into the `main` branch.
+![image](https://github.com/user-attachments/assets/36e3b489-d914-4c87-bb47-20dfdfcf7e91)
+![image](https://github.com/user-attachments/assets/07068924-df87-4aa0-9504-b46e128d3204)
+![image](https://github.com/user-attachments/assets/14213b9f-90ad-40b4-848d-8e70e1900b0e)
 
 ---
 
@@ -221,19 +233,28 @@ Install the **Remote - SSH** extension in VS Code and configure it to connect to
 ### 2. Run the Ansible Playbook
 To execute your playbook, run the following command from the `Jenkins-Ansible` server:
 
-```bash
+```
 ansible-playbook -i inventory/dev.yml playbooks/common.yml
 ```
+![image](https://github.com/user-attachments/assets/51122e85-1084-4c20-ad91-4f76a31ccbed)
 
 ### 3. Verify the Changes
 On each server (web, NFS, database, etc.), verify that Wireshark is installed:
 
-```bash
+```
 which wireshark
 wireshark --version
 ```
+Databse Server 
+![image](https://github.com/user-attachments/assets/7403862b-e51d-4fc0-82aa-4e1807422f82)
+
+NFS server 
+![image](https://github.com/user-attachments/assets/8a1aeb4d-7193-4d3c-adec-88266bea9660)
 
 ---
+
+
+![image](https://github.com/user-attachments/assets/b63c2cde-c460-4783-9dfd-aaa5988a355c)
 
 ## Step 8: Automating the Cycle
 Repeat the cycle of updating your playbook, committing changes, creating a PR, and running the Ansible playbook to manage your servers automatically.
